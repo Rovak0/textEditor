@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
-const { InjectManifest } = require('workbox-webpack-plugin');
+const { GenerateSW, InjectManifest } = require('workbox-webpack-plugin');
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -25,16 +25,16 @@ module.exports = () => {
         template: './index.html',
         title: 'Contacts'
       }),
-      new InjectManifest({ //we are not using a built in service worker, so inject manifest
-        swSrc: './src-sw.js',
-        swDest: './src-sw.js'
-      }),
+      // new InjectManifest({ //we are not using a built in service worker, so inject manifest
+      //   swSrc: './src-sw.js',
+      //   swDest: './src-sw.js'
+      // }),
 
       new GenerateSW(),
       new WebpackPwaManifest({
-        name: 'Contacts',
-        short_name: 'Contacts',
-        description: 'Dont lose contacts!',
+        name: 'TextEditor',
+        short_name: 'editor',
+        description: 'Write that down!',
         background_color: '#7eb4e2',
         theme_color: '#7eb4e2',
         start_url: './',

@@ -4,9 +4,12 @@ const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
+const { StaleWhileRevalidate } = require('workbox-strategies');
+
 
 precacheAndRoute(self.__WB_MANIFEST);
 
+//don't know what the next 3 things do
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
   plugins: [
